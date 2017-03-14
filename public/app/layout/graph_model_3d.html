@@ -1,0 +1,79 @@
+<style>
+    .btn{
+        background: transparent;
+        color: white;
+        border: 1px solid white;
+        height:28px;
+        padding: 3px 10px!important;
+    }
+    .portlet-title .btn:hover, .portlet-title .btn:focus, .portlet-title .btn:active, .portlet-title .btn.active, .portlet-title .btn[disabled], .portlet-title .btn.disabled, .portlet-title .btn.btn-down {
+        background-color : white !important;
+        outline: none;
+        color: #1d943b !important;
+    }
+    .div-2d{
+        height:50%;
+        width:100%;
+        padding:10px;
+    }
+    .div-3d{
+        display:none;
+        height:50%;
+        width:100%;
+        padding:10px;
+        border-top:1px solid #c8c8c8;
+    }
+    .caption{
+        text-align: left;
+    }
+    .query-hidden{
+        height:44px !important;
+        overflow:hidden;
+    }
+    .query-toggle{
+        display:none;position:absolute;top:0px;cursor: pointer
+    }
+</style>
+<div class="portlet box tabbable custom-green custom-border" data-ng-controller="model3d as m3">
+    <div class="portlet-title">
+        <div class="caption" style="overflow:visible">
+            <!--<span class="hidden-480">General Layouts</span>-->
+            <div class="btn-group">
+                <button class="btn btn-down" id="btn-2d" ng-click="setActiveTab($event)">2D</button>
+                <button class="btn" id="btn-3d" ng-click="setActiveTab($event)">3D</button>
+            </div>
+
+            <div class="pull-right" id="upload_2d_model_wrapper">
+                <div class="btn dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods" ng-dropzone style="border:1px solid #ffffff!important;"></div>
+                <div id="two_dimention_model_preview" class="dropzone dropzone-previews" style="position:absolute;right:0; padding: 0 !important; background-color:#26A69A" ng-show="is_new_2d_model"></div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="portlet-body full-height">
+        <div class="tabbable portlet-tabs">
+            <div class="tab-content">
+                    <div class="div-2d">
+                        <div id="secondary" class="full-height">
+                            <div class="control-group">
+                                <div class="controls" style="position:absolute;">
+                                    <select ng-change="changeSVG()" ng-model="course"
+                                            class="m-wrap" ng-options="cr.course as cr.course for cr in courses" tabindex="1">
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="daire_menu" class="3dboyutlu full-height">
+                                <object class="svg" id="svg_image" src="app/models/Granlund_ARK_MEP.svg"></object>
+                                <!--<object class="svg" id="svg_image" src="app/models/model2.svg"></object>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-3d">Panel 2 Content</div>
+                <!--<div ng-class="{'tab-pane active': activeTab === 1, 'tab-pane' : activeTab !== 1}" class="full-height">
+                </div>
+                <div ng-class="{'tab-pane active': activeTab === 2, 'tab-pane' : activeTab !== 2}" class="full-height">Panel 2 Content</div>-->
+            </div>
+        </div>
+    </div>
+</div>
